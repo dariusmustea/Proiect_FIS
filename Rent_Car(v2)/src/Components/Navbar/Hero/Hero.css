@@ -1,0 +1,8 @@
+.hero{
+    width: 100%;
+    min-height: 110vh;
+    background:  url('../../../assets/monaco3.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
