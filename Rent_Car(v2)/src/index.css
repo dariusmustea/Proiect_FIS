@@ -6,7 +6,7 @@
   font-family: "Jersey 20", sans-serif;
 }
 body{
-  background: blueviolet;
+  background: #f7f9fa;
 }
 a{
   text-decoration: none;
@@ -20,7 +20,7 @@ a{
 
 }
 .btn{
-  background: blueviolet;
+  background: rgb(172, 203, 219);
   color: black;
   padding: 14px 25px;
   font-size: 16px;
@@ -28,4 +28,5 @@ a{
   cursor: pointer;
   border: 0;
   outline: 0;
+  
 }
