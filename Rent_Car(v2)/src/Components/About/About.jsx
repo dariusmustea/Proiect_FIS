@@ -11,11 +11,11 @@ const About = () => {
       <img src={play_icon} alt="" className='play-icon'/>
      </div>
       <div className="about-right">
-      <h3>Monaco</h3>
-      <h4>Monaco is a small sovereign city-state and microstate located in Western Europe, in the Mediterranean region,
-       known for its luxury, sophisticated lifestyle, and spectacular landscapes.</h4>
-   <h4> Monaco is often associated with luxury and opulence. It is well-known for its vibrant nightlife, famous restaurants,
-     exclusive shops, and glamorous events. </h4>
+      <h1>Monaco</h1>
+      <h2>Monaco is a small sovereign city-state and microstate located in Western Europe, in the Mediterranean region,
+       known for its luxury, sophisticated lifestyle, and spectacular landscapes.</h2>
+   <h2> Monaco is often associated with luxury and opulence. It is well-known for its vibrant nightlife, famous restaurants,
+     exclusive shops, and glamorous events. </h2>
     </div>
     </div>
   )

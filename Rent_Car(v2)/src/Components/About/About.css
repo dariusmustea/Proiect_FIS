@@ -23,12 +23,12 @@
     left:50%;
     transform: translate(-50%,-50%);
 }
-.about h3{
+.about h1{
     font-weight: 600;
     font-weight: 16px;
     color: #414653;
 }
-.about h4{
+.about h2{
     font-weight: 600;
     font-weight: 16px;
     color: #414653;
