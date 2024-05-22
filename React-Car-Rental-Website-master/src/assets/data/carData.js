@@ -1,141 +1,110 @@
 // import all images from assets/images directory
-import img01 from "../all-images/cars-img/nissan-offer.png";
-import img02 from "../all-images/cars-img/offer-toyota.png";
-import img03 from "../all-images/cars-img/bmw-offer.png";
-import img04 from "../all-images/cars-img/nissan-offer.png";
-import img05 from "../all-images/cars-img/offer-toyota.png";
-import img06 from "../all-images/cars-img/mercedes-offer.png";
-import img07 from "../all-images/cars-img/toyota-offer-2.png";
-import img08 from "../all-images/cars-img/mercedes-offer.png";
+import img01 from "../all-images/cars-img/pngimg.com_v2 - ferrari_PNG102810.png";
+import img02 from "../all-images/cars-img/Aston-Martin-PNG-HD.png";
+import img03 from "../all-images/cars-img/be916c85849fecc6267718f0abc5bb3a.png";
+import img04 from "../all-images/cars-img/blue-luxury-premium-high-class-600nw-2264788569.webp";
+import img05 from "../all-images/cars-img/ef399d76b2bcb8ed0913a215f4d835ea.png";
+import img06 from "../all-images/cars-img/bugatti_v2.jpg";
+
 
 const carData = [
   {
     id: 1,
-    brand: "Tesla",
+    brand: "Ferrari",
     rating: 112,
-    carName: "Tesla Malibu",
+    carName: "Ferrari 488",
     imgUrl: img01,
-    model: "Model 3",
-    price: 50,
-    speed: "20kmpl",
+    model: "488",
+    price: 100,
+    speed: "360km/h",
     gps: "GPS Navigation",
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Renting a Ferrari 488 offers an exhilarating experience with its 661-horsepower twin-turbo V8 engine. It boasts a top speed of over 223 mph and goes from 0 to 60 mph in just 3 seconds. With its luxurious interior and stunning design, it's perfect for special occasions or a thrilling drive. Enjoy the prestige and performance of this iconic supercar.",
   },
 
   {
     id: 2,
-    brand: "Toyota",
+    brand: "Aston Martin",
     rating: 102,
-    carName: "Toyota Aventador",
+    carName: "Aston Martin DBS",
     imgUrl: img02,
-    model: "Model-2022",
-    price: 50,
-    speed: "20kmpl",
+    model: "DBS",
+    price: 80,
+    speed: "340km/h",
     gps: "GPS Navigation",
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Renting an Aston Martin DBS provides a thrilling experience with its 715-horsepower twin-turbo V12 engine. It features a top speed of 211 mph and accelerates from 0 to 60 mph in just 3.4 seconds. The DBS combines luxurious craftsmanship with cutting-edge technology, making it perfect for special events or an unforgettable driving adventure. Enjoy the elegance and power of this iconic grand tourer.",
   },
 
   {
     id: 3,
-    brand: "BMW",
+    brand: "Lamborghini",
     rating: 132,
-    carName: "BMW X3",
+    carName: "Lamborghini Aventador",
     imgUrl: img03,
-    model: "Model-2022",
-    price: 65,
-    speed: "20kmpl",
+    model: "Aventador",
+    price: 70,
+    speed: "350km/h",
     gps: "GPS Navigation",
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      " Renting a Lamborghini Aventador delivers a thrilling experience with its 769-horsepower V12 engine and top speed of 217 mph. This supercar accelerates from 0 to 60 mph in just 2.8 seconds. Its aggressive design and luxurious interior make it ideal for special occasions or an adrenaline-filled drive. Enjoy unmatched performance and iconic style with the Aventador",
   },
 
   {
     id: 4,
-    brand: "Nissan",
+    brand: "Bentley",
     rating: 102,
-    carName: "Nissan Mercielago",
+    carName: "Bentley Continental GT",
     imgUrl: img04,
-    model: "Model-2022",
-    price: 70,
-    speed: "20kmpl",
+    model: "Continental GT",
+    price: 110,
+    speed: "335km/h",
     gps: "GPS Navigation",
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      " Renting a Bentley Continental GT offers a blend of luxury and performance with its 626-horsepower W12 engine. It accelerates from 0 to 60 mph in 3.6 seconds and reaches a top speed of 208 mph. The Continental GT features an opulent interior with handcrafted materials and advanced technology. Its elegant design and smooth ride make it perfect for both city drives and long-distance journeys. Experience the ultimate in refinement and power with this prestigious grand tourer.",
   },
 
   {
     id: 5,
-    brand: "Ferrari",
+    brand: "Rolls-Royce",
     rating: 94,
-    carName: "Ferrari Camry",
+    carName: "Rolls-Royce Wraith",
     imgUrl: img05,
-    model: "Model-2022",
-    price: 45,
-    speed: "20kmpl",
+    model: "Wraith",
+    price: 150,
+    speed: "250km/h",
     gps: "GPS Navigation",
-    seatType: "Heated seats",
+    seatType: "Heated and vetilated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      " Renting a Rolls-Royce Wraith offers an unparalleled luxury experience with its 624-horsepower V12 engine. It accelerates from 0 to 60 mph in 4.4 seconds, combining power with a smooth, effortless ride. The Wraith's interior features exquisite craftsmanship, with premium materials and advanced technology. Its sleek, iconic design makes it ideal for special events or a sophisticated drive. Enjoy the epitome of elegance and performance with this prestigious grand tourer.",
   },
 
   {
     id: 6,
-    brand: "Mercedes",
+    brand: "Bugatti",
     rating: 119,
-    carName: "Mercedes Benz XC90",
+    carName: "Bugatti Chiron",
     imgUrl: img06,
-    model: "Model-2022",
-    price: 85,
-    speed: "20kmpl",
+    model: "Super Sport",
+    price: 200,
+    speed: "490km/h",
     gps: "GPS Navigation",
     seatType: "Heated seats",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      " Renting a Bugatti Chiron Super Sport delivers an extraordinary driving experience with its 1,577-horsepower quad-turbo W16 engine. It achieves a top speed of 273 mph and accelerates from 0 to 60 mph in just 2.4 seconds. The Chiron Super Sport features a luxurious interior with cutting-edge technology and bespoke materials. Its aerodynamic design and unparalleled performance make it perfect for an unforgettable and thrilling drive. Experience the pinnacle of automotive engineering and luxury with this iconic hypercar.",
   },
 
-  {
-    id: 7,
-    brand: "Audi",
-    rating: 82,
-    carName: "Audi Fiesta",
-    imgUrl: img07,
-    model: "Model 3",
-    price: 50,
-    speed: "20kmpl",
-    gps: "GPS Navigation",
-    seatType: "Heated seats",
-    automatic: "Automatic",
-    description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
-  },
-
-  {
-    id: 8,
-    brand: "Colorado",
-    rating: 52,
-    carName: "Rolls Royce Colorado",
-    imgUrl: img08,
-    model: "Model 3",
-    price: 50,
-    speed: "20kmpl",
-    gps: "GPS Navigation",
-    seatType: "Heated seats",
-    automatic: "Automatic",
-    description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
-  },
+  
 ];
 
 export default carData;

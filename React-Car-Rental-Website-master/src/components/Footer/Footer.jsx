@@ -81,7 +81,7 @@ const Footer = () => {
           <Col lg="3" md="4" sm="12">
             <div className="mb-4">
               <h5 className="footer__link-title">Newsletter</h5>
-              <p className="section__description">Subscribe our newsletter</p>
+              <p className="section__description_footer">Subscribe our newsletter</p>
               <div className="newsletter">
                 <input type="email" placeholder="Email" />
                 <span>
@@ -93,7 +93,7 @@ const Footer = () => {
 
           <Col lg="12">
             <div className="footer__bottom">
-              <p className="section__description d-flex align-items-center justify-content-center gap-1 pt-4">
+              <p className="section__description_cpry d-flex align-items-center justify-content-center gap-1 pt-4">
                 <i class="ri-copyright-line"></i>Copyright {year},
                 Luxury Cars of Monaco. All Rights Reserved.
               </p>

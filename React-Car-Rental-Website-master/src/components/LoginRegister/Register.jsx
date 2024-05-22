@@ -17,34 +17,48 @@ const { Option } = Select;
 
 const residences = [
   {
-    value: 'zhejiang',
-    label: 'Zhejiang',
+    value: 'Romania',
+    label: 'Romania',
     children: [
       {
-        value: 'hangzhou',
-        label: 'Hangzhou',
+        value: 'Arad',
+        label: 'Arad',
         children: [
           {
-            value: 'xihu',
-            label: 'West Lake',
+            value: 'Gurahont',
+            label: 'Gurahont',
+            
+          },
+          {
+            value: 'Sebis',
+            label: 'Sebis',
+            
           },
         ],
+        
       },
+      {
+        value: 'Gorj',
+      label: 'Gorj',
+      children: [
+        {
+          value: 'Targu Jiu',
+          label: 'Targu Jiu',
+          
+        },
+       
+      ],
+      }
     ],
   },
   {
-    value: 'jiangsu',
-    label: 'Jiangsu',
+    value: 'France',
+    label: 'France',
     children: [
       {
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [
-          {
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-          },
-        ],
+        value: 'Paris',
+        label: 'Paris',
+        
       },
     ],
   },
@@ -84,8 +98,8 @@ const Register = () => {
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select style={{ width: 70 }}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
+        <Option value="40">+40</Option>
+        <Option value="33">+33</Option>
       </Select>
     </Form.Item>
   );
@@ -94,7 +108,7 @@ const Register = () => {
     <Form.Item name="suffix" noStyle>
       <Select style={{ width: 70 }}>
         <Option value="USD">$</Option>
-        <Option value="CNY">¥</Option>
+        <Option value="EUR">€</Option>
       </Select>
     </Form.Item>
   );
@@ -120,7 +134,7 @@ const Register = () => {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{ residence: ['zhejiang', 'hangzhou', 'xihu'], prefix: '86' }}
+      initialValues={{ residence: ['Romania', 'Timis', 'Timisoara'], prefix: '+40' }}
       style={{ maxWidth: 600 }}
       scrollToFirstError
     >
@@ -178,14 +192,7 @@ const Register = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item
-        name="nickname"
-        label="Nickname"
-        tooltip="What do you want others to call you?"
-        rules={[{ required: true, message: 'Please input your nickname!', whitespace: true }]}
-      >
-        <Input />
-      </Form.Item>
+      
 
       <Form.Item
         name="residence"
@@ -203,32 +210,6 @@ const Register = () => {
         rules={[{ required: true, message: 'Please input your phone number!' }]}
       >
         <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
-      </Form.Item>
-
-      <Form.Item
-        name="donation"
-        label="Donation"
-        rules={[{ required: true, message: 'Please input donation amount!' }]}
-      >
-        <InputNumber addonAfter={suffixSelector} style={{ width: '100%' }} />
-      </Form.Item>
-
-      <Form.Item
-        name="website"
-        label="Website"
-        rules={[{ required: true, message: 'Please input website!' }]}
-      >
-        <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="website">
-          <Input />
-        </AutoComplete>
-      </Form.Item>
-
-      <Form.Item
-        name="intro"
-        label="Intro"
-        rules={[{ required: true, message: 'Please input Intro' }]}
-      >
-        <Input.TextArea showCount maxLength={100} />
       </Form.Item>
 
       <Form.Item

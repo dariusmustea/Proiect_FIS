@@ -3,7 +3,7 @@ import "../../styles/our-member.css";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import teo from "../../assets/all-images/teo.jpg";
-import drs from "../../assets/all-images/drs.jpeg";
+import drs from "../../assets/all-images/drs_v2.jpg";
 
 
 const OUR__MEMBERS = [
