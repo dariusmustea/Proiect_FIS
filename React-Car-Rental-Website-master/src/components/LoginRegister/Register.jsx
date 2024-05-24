@@ -48,7 +48,7 @@ const Register = () => {
   const onFinish = async (values) => {
     console.log('Received values of form: ', values);
     try {
-      const response = await axios.post('http://localhost:5000/register', values);
+      const response = await axios.post('http://localhost:3000/register', values);
       console.log(response.data);
       alert('User registered successfully!');
     } catch (error) {
