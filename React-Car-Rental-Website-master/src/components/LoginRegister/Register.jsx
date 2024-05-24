@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
-import {
-  AutoComplete,
-  Button,
-  Cascader,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-} from 'antd';
+import { AutoComplete, Button, Cascader, Checkbox, Col, Form, Input, Row, Select } from 'antd';
+import axios from 'axios';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import './Register.css'
+import './Register.css';
+
 const { Option } = Select;
 
 const residences = [
@@ -24,75 +15,46 @@ const residences = [
         value: 'Arad',
         label: 'Arad',
         children: [
-          {
-            value: 'Gurahont',
-            label: 'Gurahont',
-            
-          },
-          {
-            value: 'Sebis',
-            label: 'Sebis',
-            
-          },
+          { value: 'Gurahont', label: 'Gurahont' },
+          { value: 'Sebis', label: 'Sebis' },
         ],
-        
       },
       {
         value: 'Gorj',
-      label: 'Gorj',
-      children: [
-        {
-          value: 'Targu Jiu',
-          label: 'Targu Jiu',
-          
-        },
-       
-      ],
-      }
+        label: 'Gorj',
+        children: [{ value: 'Targu Jiu', label: 'Targu Jiu' }],
+      },
     ],
   },
   {
     value: 'France',
     label: 'France',
-    children: [
-      {
-        value: 'Paris',
-        label: 'Paris',
-        
-      },
-    ],
+    children: [{ value: 'Paris', label: 'Paris' }],
   },
 ];
 
 const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
-  },
+  labelCol: { xs: { span: 24 }, sm: { span: 8 } },
+  wrapperCol: { xs: { span: 24 }, sm: { span: 16 } },
 };
 
 const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
+  wrapperCol: { xs: { span: 24, offset: 0 }, sm: { span: 16, offset: 8 } },
 };
 
 const Register = () => {
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Received values of form: ', values);
+    try {
+      const response = await axios.post('http://localhost:5000/register', values);
+      console.log(response.data);
+      alert('User registered successfully!');
+    } catch (error) {
+      console.error(error);
+      alert('Registration failed!');
+    }
   };
 
   const prefixSelector = (
@@ -100,15 +62,6 @@ const Register = () => {
       <Select style={{ width: 70 }}>
         <Option value="40">+40</Option>
         <Option value="33">+33</Option>
-      </Select>
-    </Form.Item>
-  );
-
-  const suffixSelector = (
-    <Form.Item name="suffix" noStyle>
-      <Select style={{ width: 70 }}>
-        <Option value="USD">$</Option>
-        <Option value="EUR">€</Option>
       </Select>
     </Form.Item>
   );
@@ -134,7 +87,7 @@ const Register = () => {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{ residence: ['Romania', 'Timis', 'Timisoara'], prefix: '+40' }}
+      initialValues={{ residence: ['Romania', 'Arad', 'Gurahont'], prefix: '+40' }}
       style={{ maxWidth: 600 }}
       scrollToFirstError
     >
@@ -142,14 +95,8 @@ const Register = () => {
         name="email"
         label="E-mail"
         rules={[
-          {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
-          },
-          {
-            required: true,
-            message: 'Please input your E-mail!',
-          },
+          { type: 'email', message: 'The input is not valid E-mail!' },
+          { required: true, message: 'Please input your E-mail!' },
         ]}
       >
         <Input />
@@ -158,12 +105,7 @@ const Register = () => {
       <Form.Item
         name="password"
         label="Password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
+        rules={[{ required: true, message: 'Please input your password!' }]}
         hasFeedback
       >
         <Input.Password />
@@ -175,16 +117,13 @@ const Register = () => {
         dependencies={['password']}
         hasFeedback
         rules={[
-          {
-            required: true,
-            message: 'Please confirm your password!',
-          },
+          { required: true, message: 'Please confirm your password!' },
           ({ getFieldValue }) => ({
             validator(_, value) {
               if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error('The new password that you entered do not match!'));
+              return Promise.reject(new Error('The two passwords that you entered do not match!'));
             },
           }),
         ]}
@@ -192,14 +131,10 @@ const Register = () => {
         <Input.Password />
       </Form.Item>
 
-      
-
       <Form.Item
         name="residence"
         label="Habitual Residence"
-        rules={[
-          { type: 'array', required: true, message: 'Please select your habitual residence!' },
-        ]}
+        rules={[{ type: 'array', required: true, message: 'Please select your habitual residence!' }]}
       >
         <Cascader options={residences} />
       </Form.Item>
@@ -212,42 +147,14 @@ const Register = () => {
         <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
       </Form.Item>
 
-      <Form.Item
-        name="gender"
-        label="Gender"
-        rules={[{ required: true, message: 'Please select gender!' }]}
-      >
-        <Select placeholder="select your gender">
-          <Option value="male">Male</Option>
-          <Option value="female">Female</Option>
-          <Option value="other">Other</Option>
-        </Select>
-      </Form.Item>
-
-      <Form.Item label="Captcha" extra="We must make sure that your are a human.">
-        <Row gutter={8}>
-          <Col span={12}>
-            <Form.Item
-              name="captcha"
-              noStyle
-              rules={[{ required: true, message: 'Please input the captcha you got!' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Button>Get captcha</Button>
-          </Col>
-        </Row>
-      </Form.Item>
+     
 
       <Form.Item
         name="agreement"
         valuePropName="checked"
         rules={[
           {
-            validator: (_, value) =>
-              value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+            validator: (_, value) => value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
           },
         ]}
         {...tailFormItemLayout}
@@ -256,6 +163,7 @@ const Register = () => {
           I have read the <a href="">agreement</a>
         </Checkbox>
       </Form.Item>
+      
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
           Register
