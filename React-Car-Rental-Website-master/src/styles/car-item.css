@@ -1,7 +1,14 @@
+
 .car__item {
   border: 1px solid #7c8a9736;
   padding: 20px;
   border-radius: 5px;
+}
+
+.car__item img {
+  width: 400px;
+  height: 200px; 
+  object-fit: cover; 
 }
 
 .car__item-info span i {

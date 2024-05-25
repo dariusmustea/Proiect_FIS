@@ -85,6 +85,34 @@ app.post('/login', async (req, res) => {
   }
 });
 
+
+app.get('/api/cars/:slug', (req, res) => {
+  const { slug } = req.params;
+  const query = 'SELECT * FROM cars WHERE carName = ?';
+
+  db.query(query, [slug], (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error', error: err });
+    }
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
+    res.status(200).json(results[0]);
+  });
+});
+
+app.get('/api/cars', (req, res) => {
+  const query = 'SELECT * FROM cars';
+  
+  db.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error', error: err });
+    }
+    res.status(200).json(results);
+  });
+});
+
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
