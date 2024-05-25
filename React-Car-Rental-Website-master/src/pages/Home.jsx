@@ -88,14 +88,7 @@ const Home = () => {
           </Row>
         </Container>
       </section>
-      {/* =============== blog section =========== */}
-      <section>
-        <Container>
-          <Row>
-            <Col lg="12" className="mb-5 text-center"></Col>
-          </Row>
-        </Container>
-      </section>
+      
     </Helmet>
   );
 };

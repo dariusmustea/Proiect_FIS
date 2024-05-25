@@ -84,7 +84,7 @@ const Header = () => {
                 </span>
                 <div className="header__location-content">
                   <h4>Monaco</h4>
-                  <h6></h6>
+                  
                 </div>
               </div>
             </Col>
@@ -142,14 +142,7 @@ const Header = () => {
               </div>
             </div>
 
-            <div className="nav__right">
-              <div className="search__box">
-                <input type="text" placeholder="Search" />
-                <span>
-                  <i class="ri-search-line"></i>
-                </span>
-              </div>
-            </div>
+            
           </div>
         </Container>
       </div>
