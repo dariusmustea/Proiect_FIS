@@ -23,6 +23,7 @@ db.connect((err) => {
   }
 });
 
+// Register endpoint
 app.post('/register', async (req, res) => {
   const { email, password, phone_number, gender } = req.body;
 
@@ -47,6 +48,39 @@ app.post('/register', async (req, res) => {
     );
   } catch (error) {
     console.error('Error in registration process:', error);
+    res.status(500).json({ message: 'Internal server error', error });
+  }
+});
+
+// Login endpoint
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Fetch user from database by email
+    db.query('SELECT * FROM users WHERE email = ?', [email], async (err, result) => {
+      if (err) {
+        console.error('Error fetching user from database:', err);
+        return res.status(500).json({ message: 'Database error', error: err });
+      }
+
+      if (result.length === 0) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      const user = result[0];
+
+      // Compare passwords
+      const passwordMatch = await bcrypt.compare(password, user.password);
+
+      if (!passwordMatch) {
+        return res.status(401).json({ message: 'Invalid password' });
+      }
+
+      res.status(200).json({ message: 'Login successful' });
+    });
+  } catch (error) {
+    console.error('Error in login process:', error);
     res.status(500).json({ message: 'Internal server error', error });
   }
 });

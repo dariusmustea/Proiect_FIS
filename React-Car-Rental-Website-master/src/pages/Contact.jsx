@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, FormGroup, Input, Button } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
-import CommonSection from "../components/UI/CommonSection";
-
+import emailjs from 'emailjs-com';
 import "../styles/contact.css";
 
 const socialLinks = [
@@ -14,30 +12,14 @@ const socialLinks = [
 ];
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setStatus("Email sent successfully!");
-      } else {
-        setStatus("Failed to send email. Please try again later.");
-      }
+      setStatus("Sending...");
+      await emailjs.sendForm('service_n7t5q5g', 'template_jb2cy5f', e.target, '09hPdqNCCNZT7ULD0');
+      setStatus("Email sent successfully!");
     } catch (error) {
       console.error("Error:", error);
       setStatus("Failed to send email. Please try again later.");
@@ -46,7 +28,6 @@ const Contact = () => {
 
   return (
     <Helmet title="Contact">
-      <CommonSection title="Contact" />
       <section>
         <Container>
           <Row>
@@ -58,8 +39,6 @@ const Contact = () => {
                     name="name"
                     placeholder="Your Name"
                     type="text"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                   />
                 </FormGroup>
@@ -68,8 +47,6 @@ const Contact = () => {
                     name="email"
                     placeholder="Email"
                     type="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                   />
                 </FormGroup>
@@ -79,16 +56,13 @@ const Contact = () => {
                     rows="5"
                     placeholder="Message"
                     className="textarea"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                   ></textarea>
                 </FormGroup>
                 <Button className="contact__btn" type="submit">
-                  Send Message
+                  {status ? status : "Send Message"}
                 </Button>
               </Form>
-              {status && <p>{status}</p>}
             </Col>
 
             <Col lg="5" md="5">
@@ -106,9 +80,9 @@ const Contact = () => {
                 <h6 className="fw-bold mt-4">Follow Us</h6>
                 <div className="d-flex align-items-center gap-4 mt-3">
                   {socialLinks.map((item, index) => (
-                    <Link to={item.url} key={index} className="social__link-icon">
+                    <a href={item.url} key={index} className="social__link-icon">
                       <i className={item.icon}></i>
-                    </Link>
+                    </a>
                   ))}
                 </div>
               </div>

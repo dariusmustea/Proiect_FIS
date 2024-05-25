@@ -1,11 +1,28 @@
 import React from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons'
-import { Button, Checkbox, Form, Input } from 'antd'
-import './LoginRegister.css'
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Input } from 'antd';
+import axios from 'axios';
+import './LoginRegister.css';
 
 const LoginRegister = () => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const onFinish = async (values) => {
+    try {
+      const response = await axios.post('http://localhost:3001/login', {
+        email: values.email,
+        password: values.password,
+      });
+      console.log('Login successful', response.data);
+      alert('Login successful!');
+      // Optionally, you can redirect the user to another page upon successful login
+       window.location.href = '/home';
+    } catch (error) {
+      console.error('There was an error!', error);
+      if (error.response && error.response.data) {
+        alert(error.response.data.message);
+      } else {
+        alert('Login failed!');
+      }
+    }
   };
 
   return (
@@ -16,10 +33,10 @@ const LoginRegister = () => {
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
-        rules={[{ required: true, message: 'Please input your Username!' }]}
+        name="email"
+        rules={[{ required: true, message: 'Please input your Email!' }]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
       </Form.Item>
       <Form.Item
         name="password"
