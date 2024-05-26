@@ -18,5 +18,10 @@
     "mysql": "^2.18.1",
     "mysql2": "^3.9.7",
     "nodemailer": "^6.9.13"
-  }
+  },
+  "pkg": {
+    "scripts": "src/**/*.js",
+    "assets": "public/**/*"
+  },
+  "bin": "./index.js"
 }
