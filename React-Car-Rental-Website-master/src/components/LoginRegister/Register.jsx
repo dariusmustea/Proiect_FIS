@@ -38,7 +38,7 @@ const Register = () => {
         email: values.email,
         password: values.password,
         phone_number: `${values.prefix}${values.phone}`,
-        gender: values.gender,
+        gender: values.type,
       });
       console.log('Registration successful', response.data);
       alert('User registered successfully!');
@@ -132,13 +132,12 @@ const Register = () => {
 
       <Form.Item
         name="gender"
-        label="Gender"
-        rules={[{ required: true, message: 'Please select gender!' }]}
+        label="Type"
+        rules={[{ required: true, message: 'Please select type!' }]}
       >
-        <Select placeholder="select your gender">
-          <Option value="male">Male</Option>
-          <Option value="female">Female</Option>
-          <Option value="other">Other</Option>
+        <Select placeholder="select your type">
+          <Option value="admin">Admin</Option>
+          <Option value="customer">Customer</Option>
         </Select>
       </Form.Item>
 

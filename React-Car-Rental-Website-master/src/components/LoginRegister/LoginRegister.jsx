@@ -11,10 +11,22 @@ const LoginRegister = () => {
         email: values.email,
         password: values.password,
       });
+
       console.log('Login successful', response.data);
       alert('Login successful!');
-      // Optionally, you can redirect the user to another page upon successful login
-       window.location.href = '/home';
+
+      const userType = response.data.userType;
+
+      // Redirect based on user type
+      if (userType === 'admin') {
+        alert('You are admin!');
+        window.location.href = '/home';
+      } else if (userType === 'customer') {
+        alert('You are customer!');
+        window.location.href = '/home';
+      } else {
+        alert('Unknown user type!');
+      }
     } catch (error) {
       console.error('There was an error!', error);
       if (error.response && error.response.data) {
@@ -53,7 +65,7 @@ const LoginRegister = () => {
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
 
-        <a className="login-form-forgot" href="">
+        <a className="login-form-forgot" href="/login">
           Forgot password
         </a>
       </Form.Item>

@@ -25,7 +25,7 @@ db.connect((err) => {
 
 // Register endpoint
 app.post('/register', async (req, res) => {
-  const { email, password, phone_number, gender } = req.body;
+  const { email, password, phone_number, type } = req.body;
 
   try {
     // Hash the password
@@ -33,8 +33,8 @@ app.post('/register', async (req, res) => {
 
     // Insert user into the database
     db.query(
-      'INSERT INTO users (email, password, phone_number, gender) VALUES (?, ?, ?, ?)',
-      [email, hashedPassword, phone_number, gender],
+      'INSERT INTO users (email, password, phone_number, type) VALUES (?, ?, ?, ?)',
+      [email, hashedPassword, phone_number, type],
       (err, result) => {
         if (err) {
           console.error('Error inserting user into database:', err);
@@ -77,7 +77,7 @@ app.post('/login', async (req, res) => {
         return res.status(401).json({ message: 'Invalid password' });
       }
 
-      res.status(200).json({ message: 'Login successful' });
+      res.status(200).json({ message: 'Login successful', userType: user.type });
     });
   } catch (error) {
     console.error('Error in login process:', error);
