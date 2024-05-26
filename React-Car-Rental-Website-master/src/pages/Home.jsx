@@ -55,8 +55,8 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">See our</h6>
-              <h2 className="section__title">Popular Services</h2>
+              
+              <h2 className="section__title">See our services</h2>
             </Col>
             <ServicesList />
           </Row>
@@ -67,7 +67,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center mb-5">
-              <h6 className="section__subtitle">Hot Offers</h6>
+             
               <h2 className="section__title">Check out our cars</h2>
             </Col>
 

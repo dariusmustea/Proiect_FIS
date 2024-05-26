@@ -113,6 +113,57 @@ app.get('/api/cars', (req, res) => {
 });
 
 
+app.post('/api/reserve', (req, res) => {
+  const { carId } = req.body;
+
+  const checkQuantityQuery = 'SELECT quantity FROM cars WHERE id = ?';
+  const updateQuantityQuery = 'UPDATE cars SET quantity = quantity - 1 WHERE id = ?';
+
+  db.query(checkQuantityQuery, [carId], (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error', error: err });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
+
+    const car = results[0];
+
+    if (car.quantity <= 0) {
+      return res.status(400).json({ message: 'Car is out of stock' });
+    }
+
+    db.query(updateQuantityQuery, [carId], (err, updateResults) => {
+      if (err) {
+        return res.status(500).json({ message: 'Database error', error: err });
+      }
+
+      res.status(200).json({ message: 'Car reserved successfully' });
+    });
+  });
+});
+
+app.get('/api/carsForm', (req, res) => {
+  const { type } = req.query;
+  
+  // Verifică dacă a fost specificat un tip de mașină
+  if (!type) {
+    return res.status(400).json({ message: 'Car type not specified' });
+  }
+
+  const query = 'SELECT * FROM cars WHERE type = ?';
+  
+  db.query(query, [type], (err, results) => {
+    if (err) {
+      return res.status(500).json({ message: 'Database error', error: err });
+    }
+    res.status(200).json(results);
+  });
+});
+
+
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

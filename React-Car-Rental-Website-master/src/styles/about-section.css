@@ -1,9 +1,11 @@
 .about__section-item {
   column-gap: 3rem;
 }
-
+.section__subtitle{
+  color: #6b2900;
+}
 .about__section-item p i {
-  color: #f9a826;
+  color: #6b2900;
   font-size: 1.1rem;
 }
 

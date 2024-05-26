@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Col } from "reactstrap";
 import "../../styles/car-item.css";
+
 const CarItem = ({ item }) => {
   return (
     <Col lg="4" md="6" sm="6" className="mb-5">
@@ -12,7 +13,7 @@ const CarItem = ({ item }) => {
           <h6 className="rent__price text-center mt-">
             ${item.price}.00 <span>/ Day</span>
           </h6>
-
+          
           <div className="car__item-info d-flex align-items-center justify-content-between mt-3 mb-4">
             <span className="d-flex align-items-center gap-1">
               <i className="ri-roadster-line"></i> {item.model}

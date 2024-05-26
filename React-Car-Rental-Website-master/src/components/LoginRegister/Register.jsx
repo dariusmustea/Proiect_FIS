@@ -42,6 +42,7 @@ const Register = () => {
       });
       console.log('Registration successful', response.data);
       alert('User registered successfully!');
+      window.location.href = '/login';
     } catch (error) {
       console.error('There was an error!', error.response ? error.response.data : error.message);
       alert('Registration failed!');

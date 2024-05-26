@@ -115,7 +115,7 @@ const CarDetails = () => {
             <Col lg="5" className="mt-5">
               <div className="payment__info mt-5">
                 <h5 className="mb-4 fw-bold">Payment Information</h5>
-                <PaymentMethod />
+                <PaymentMethod carId={singleCarItem.id} />
               </div>
             </Col>
           </Row>

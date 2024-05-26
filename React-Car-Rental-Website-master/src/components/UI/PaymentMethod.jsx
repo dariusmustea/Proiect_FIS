@@ -1,10 +1,25 @@
-import React from "react";
-
+import React, { useState } from "react";
+import axios from "axios";
 import masterCard from "../../assets/all-images/master-card.jpg";
 import paypal from "../../assets/all-images/paypal.jpg";
 import "../../styles/payment-method.css";
 
-const PaymentMethod = () => {
+const PaymentMethod = ({ carId }) => {
+  const [message, setMessage] = useState("");
+
+  const handleReserve = async () => {
+    try {
+      const response = await axios.post('http://localhost:3001/api/reserve', { carId });
+      setMessage(response.data.message);
+    } catch (error) {
+      if (error.response) {
+        setMessage(error.response.data.message);
+      } else {
+        setMessage('An error occurred. Please try again later.');
+      }
+    }
+  };
+
   return (
     <>
       <div className="payment">
@@ -34,9 +49,12 @@ const PaymentMethod = () => {
 
         <img src={paypal} alt="" />
       </div>
+
       <div className="payment text-end mt-5">
-        <button>Reserve Now</button>
+        <button onClick={handleReserve}>Reserve Now</button>
       </div>
+
+      {message && <div className="mt-3 text-center">{message}</div>}
     </>
   );
 };
